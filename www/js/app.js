@@ -1,4 +1,4 @@
-var todoApp = angular.module('todo', ['ionic'])
+var todoApp = angular.module('todo', ['ionic', 'ngCordova'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 

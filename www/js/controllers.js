@@ -7,9 +7,24 @@ todoApp.controller('TasksCtrl', function($scope) {
   ];
 });
 
-todoApp.controller('AddTaskCtrl', function($scope, $ionicHistory) {
+todoApp.controller('AddTaskCtrl', function($scope, $ionicHistory, $cordovaCamera) {
+  $scope.image = "";
   $scope.goBack = function() {
     $ionicHistory.goBack();
+  };
+  $scope.addImage = function() {
+    var options = {
+      destinationType : Camera.DestinationType.FILE_URI,
+      sourceType : Camera.PictureSourceType.CAMERA,
+      allowEdit : false,
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+    };
+    
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+      console.log(imageData);
+      $scope.image = imageData;
+    });
   };
 });
 

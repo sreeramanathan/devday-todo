@@ -7,6 +7,10 @@
 		  <label class="item item-input">
 		    <textarea placeholder="Description"></textarea>
 		  </label>
+		  <button class="button button-full button-icon icon ion-camera" ng-click="addImage()"></button>
+		  <div class="text-center">
+		  	<img ng-src="{{image}}" height="200px"/>
+			</div>
 		</div>
 		<div class="text-center">
 			<button class="button button-positive" ng-click="goBack()">Save</button>
