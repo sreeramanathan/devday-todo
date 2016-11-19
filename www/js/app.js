@@ -18,4 +18,8 @@ var todoApp = angular.module('todo', ['ionic', 'ngCordova'])
 
   $urlRouterProvider.otherwise('/tasks');
 
+})
+
+.run(function() {
+  window.localStorage.setItem("tasks", JSON.stringify([]));
 });

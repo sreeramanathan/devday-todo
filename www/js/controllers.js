@@ -1,15 +1,17 @@
 todoApp.controller('TasksCtrl', function($scope) {
-  $scope.tasks = [
-    { title: 'Collect coins' },
-    { title: 'Eat mushrooms' },
-    { title: 'Get high enough to grab the flag' },
-    { title: 'Find the Princess' }
-  ];
+  $scope.$on('$ionicView.enter', function(e) {
+    $scope.tasks = JSON.parse(window.localStorage.getItem("tasks"));    
+  });
 });
 
 todoApp.controller('AddTaskCtrl', function($scope, $ionicHistory, $cordovaCamera) {
+  $scope.data = {};
   $scope.image = "";
-  $scope.goBack = function() {
+  $scope.save = function() {
+    items = JSON.parse(window.localStorage.getItem("tasks"));
+    items.push({"name": $scope.data.name, "desc": $scope.data.desc});
+    window.localStorage.removeItem("tasks");
+    window.localStorage.setItem("tasks", JSON.stringify(items));
     $ionicHistory.goBack();
   };
   $scope.addImage = function() {
@@ -22,7 +24,6 @@ todoApp.controller('AddTaskCtrl', function($scope, $ionicHistory, $cordovaCamera
     };
     
     $cordovaCamera.getPicture(options).then(function(imageData) {
-      console.log(imageData);
       $scope.image = imageData;
     });
   };
@@ -30,7 +31,7 @@ todoApp.controller('AddTaskCtrl', function($scope, $ionicHistory, $cordovaCamera
 
 todoApp.controller('ListsCtrl', function($scope) {
   $scope.lists = [
-    { title: 'Super Mario' },
-    { title: 'Duck Hunt' },
+    { title: 'Personal' },
+    { title: 'Official' },
   ];
 });

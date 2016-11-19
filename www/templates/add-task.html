@@ -2,10 +2,10 @@
 	<ion-content>
 		<div class="list">
 		  <label class="item item-input">
-		    <input type="text" placeholder="Title">
+		    <input type="text" ng-model="data.name" placeholder="Title">
 		  </label>
 		  <label class="item item-input">
-		    <textarea placeholder="Description"></textarea>
+		    <textarea ng-model="data.desc" placeholder="Description"></textarea>
 		  </label>
 		  <button class="button button-full button-icon icon ion-camera" ng-click="addImage()"></button>
 		  <div class="text-center">
@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<div class="text-center">
-			<button class="button button-positive" ng-click="goBack()">Save</button>
+			<button class="button button-positive" ng-click="save()">Save</button>
 		</div>
 	</ion-content>
 </ion-view>
